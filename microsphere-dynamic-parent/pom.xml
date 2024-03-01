@@ -15,7 +15,7 @@
     <version>${revision}</version>
     <packaging>pom</packaging>
 
-    <name>Microsphere :: Dynmaic :: Parent</name>
+    <name>Microsphere :: Dynamic :: Parent</name>
     <description>Microsphere Dynamic Parent</description>
 
     <properties>
@@ -23,6 +23,7 @@
         <microsphere-spring.version>${revision}</microsphere-spring.version>
         <microsphere-spring-boot.version>${revision}</microsphere-spring-boot.version>
         <microsphere-spring-cloud.version>${revision}</microsphere-spring-cloud.version>
+        <microsphere-multiactive.version>${revision}</microsphere-multiactive.version>
         <!-- BOM versions -->
         <spring-boot.version>2.7.17</spring-boot.version>
         <spring-cloud.version>3.1.6</spring-cloud.version>
@@ -32,6 +33,8 @@
         <resilience4j.version>1.7.0</resilience4j.version>
         <mybatis-starter.version>3.0.1</mybatis-starter.version>
         <mybatis.version>3.5.11</mybatis.version>
+        <mybatis-plus.version>3.5.5</mybatis-plus.version>
+        <shardingsphere.version>5.1.1</shardingsphere.version>
     </properties>
 
     <dependencyManagement>
@@ -89,6 +92,15 @@
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
                 <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Microsphere Multi-Active Dependencies -->
+            <dependency>
+                <groupId>io.github.microsphere-projects</groupId>
+                <artifactId>microsphere-multiactive-dependencies</artifactId>
+                <version>${microsphere-multiactive.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -151,6 +163,19 @@
                 <version>${mybatis.version}</version>
             </dependency>
 
+            <!-- MyBatis-Plus -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <!-- ShardingSphere JDBC -->
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
+                <version>${shardingsphere.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
