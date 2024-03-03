@@ -31,9 +31,9 @@
         <spring-cloud-dependencies.version>2021.0.7</spring-cloud-dependencies.version>
         <!-- Third-party versions -->
         <resilience4j.version>1.7.0</resilience4j.version>
-        <mybatis-starter.version>3.0.1</mybatis-starter.version>
-        <mybatis.version>3.5.11</mybatis.version>
-        <mybatis-plus.version>3.5.5</mybatis-plus.version>
+        <mybatis.version>3.5.15</mybatis.version>
+        <mybatis-starter.version>2.3.1</mybatis-starter.version>
+        <mybatis-plus.version>3.3.0</mybatis-plus.version>
         <shardingsphere.version>5.1.1</shardingsphere.version>
     </properties>
 
