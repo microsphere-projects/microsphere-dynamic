@@ -35,6 +35,7 @@
         <mybatis-starter.version>2.3.1</mybatis-starter.version>
         <mybatis-plus.version>3.3.0</mybatis-plus.version>
         <shardingsphere.version>5.1.1</shardingsphere.version>
+        <mariadb4j.version>2.5.3</mariadb4j.version>
     </properties>
 
     <dependencyManagement>
@@ -175,6 +176,19 @@
                 <groupId>org.apache.shardingsphere</groupId>
                 <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
                 <version>${shardingsphere.version}</version>
+            </dependency>
+
+            <!-- MariaDB4j -->
+            <dependency>
+                <groupId>ch.vorburger.mariaDB4j</groupId>
+                <artifactId>mariaDB4j</artifactId>
+                <version>${mariadb4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.vorburger.mariaDB4j</groupId>
+                <artifactId>mariaDB4j-springboot</artifactId>
+                <version>${mariadb4j.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
