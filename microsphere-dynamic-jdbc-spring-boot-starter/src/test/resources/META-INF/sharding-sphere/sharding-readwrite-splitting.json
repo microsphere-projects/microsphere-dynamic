@@ -1,0 +1,40 @@
+{
+  "datasource": [
+    {
+      "name": "write-ds-0",
+      "jdbcUrl": "127.0.0.1:3306/demo_write_ds_0",
+      "username": "root",
+      "password": "123456"
+    },
+    {
+      "name": "write-ds-0-read-0",
+      "jdbcUrl": "127.0.0.1:3306/demo_write_ds_0_read_0"
+    },
+    {
+      "name": "write-ds-0-read-1",
+      "jdbcUrl": "127.0.0.1:3306/demo_write_ds_0_read_1"
+    },
+    {
+      "name": "write-ds-1",
+      "jdbcUrl": "127.0.0.1:3306/demo_write_ds_1"
+    },
+    {
+      "name": "write-ds-1-read-0",
+      "jdbcUrl": "127.0.0.1:3306/demo_write_ds_1_read_0"
+    },
+    {
+      "name": "write-ds-1-read-1",
+      "jdbcUrl": "127.0.0.1:3306/demo_write_ds_1_read_1"
+    }
+  ],
+  "sharding-sphere": {
+    "config-resource": "classpath:/META-INF/sharding-sphere/config/sharding-readwrite-splitting.yaml"
+  },
+  "mybatis-plus": {
+    "base-packages": "io.microsphere.dynamic.jdbc.spring.boot.shardingsphere.examples.mybatis.repository",
+    "properties": {
+      "checkConfigLocation": true,
+      "configLocation": "classpath:/META-INF/mybatis/mybatis-config.xml"
+    }
+  }
+}

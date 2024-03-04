@@ -1,0 +1,28 @@
+{
+  "dynamic": false,
+  "datasource": [
+    {
+      "name": "ds-0",
+      "jdbcUrl": "127.0.0.1:3306/demo_ds_0",
+      "username": "root",
+      "password": "123456"
+    },
+    {
+      "name": "ds-1",
+      "jdbcUrl": "127.0.0.1:3306/demo_ds_1"
+    }
+  ],
+  "transaction": {
+    "name": "myTransaction"
+  },
+  "sharding-sphere": {
+    "config-resource": "classpath:/META-INF/sharding-sphere/config/sharding-databases.yaml"
+  },
+  "mybatis-plus": {
+    "base-packages": "io.microsphere.dynamic.jdbc.spring.boot.shardingsphere.examples.mybatis.repository",
+    "properties": {
+      "checkConfigLocation": true,
+      "configLocation": "classpath:/META-INF/mybatis/mybatis-config.xml"
+    }
+  }
+}

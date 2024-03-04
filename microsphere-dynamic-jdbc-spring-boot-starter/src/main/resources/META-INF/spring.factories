@@ -1,0 +1,49 @@
+# ApplicationListener
+org.springframework.context.ApplicationListener=\
+io.microsphere.dynamic.jdbc.spring.boot.context.DynamicJdbcContextApplicationListener
+
+# AutoConfigurationImportListener
+org.springframework.boot.autoconfigure.AutoConfigurationImportListener=\
+io.microsphere.dynamic.jdbc.spring.boot.autoconfigure.DynamicJdbcAutoConfigurationImportListener
+
+# DefaultPropertiesPostProcessor
+io.microsphere.spring.boot.env.DefaultPropertiesPostProcessor=\
+io.microsphere.dynamic.jdbc.spring.boot.env.DynamicJdbcDefaultPropertiesPostProcessor
+
+# ConfigPostProcessor
+io.microsphere.dynamic.jdbc.spring.boot.config.ConfigPostProcessor=\
+io.microsphere.dynamic.jdbc.spring.boot.config.DynamicJdbcConfigPostProcessor,\
+io.microsphere.dynamic.jdbc.spring.boot.datasource.config.DataSourcePropertiesConfigPostProcessor,\
+io.microsphere.dynamic.jdbc.spring.boot.transaction.config.TransactionConfigPostProcessor,\
+io.microsphere.dynamic.jdbc.spring.boot.shardingsphere.config.ShardingSphereConfigPostProcessor,\
+io.microsphere.dynamic.jdbc.spring.boot.mybatis.config.MybatisConfigPostProcessor,\
+io.microsphere.dynamic.jdbc.spring.boot.mybatisplus.config.MybatisPlusConfigPostProcessor
+
+# ConfigValidator
+io.microsphere.dynamic.jdbc.spring.boot.config.validation.ConfigValidator=\
+io.microsphere.dynamic.jdbc.spring.boot.config.validation.DynamicJdbcConfigValidator,\
+io.microsphere.dynamic.jdbc.spring.boot.datasource.validation.DataSourcePropertiesModuleValidator,\
+io.microsphere.dynamic.jdbc.spring.boot.transaction.validation.TransactionConfigValidator,\
+io.microsphere.dynamic.jdbc.spring.boot.shardingsphere.validation.ShardingSphereConfigValidator,\
+io.microsphere.dynamic.jdbc.spring.boot.mybatis.validation.MybatisConfigValidator,\
+io.microsphere.dynamic.jdbc.spring.boot.mybatisplus.validation.MybatisPlusConfigValidator
+
+# ConfigConfigurationPropertiesSynthesizer
+io.microsphere.dynamic.jdbc.spring.boot.env.ConfigConfigurationPropertiesSynthesizer=\
+io.microsphere.dynamic.jdbc.spring.boot.transaction.env.TransactionConfigConfigurationPropertiesSynthesizer,\
+io.microsphere.dynamic.jdbc.spring.boot.shardingsphere.env.ShardingSphereConfigConfigurationPropertiesSynthesizer,\
+io.microsphere.dynamic.jdbc.spring.boot.datasource.env.DataSourceConfigurationPropertiesSynthesizer,\
+io.microsphere.dynamic.jdbc.spring.boot.mybatis.env.MybatisConfigConfigurationPropertiesSynthesizer,\
+io.microsphere.dynamic.jdbc.spring.boot.mybatisplus.env.MybatisPlusConfigConfigurationPropertiesSynthesizer
+
+# ConfigBeanDefinitionRegistrar
+io.microsphere.dynamic.jdbc.spring.boot.context.ConfigBeanDefinitionRegistrar=\
+io.microsphere.dynamic.jdbc.spring.boot.context.DynamicJdbcConfigBeanDefinitionRegistrar,\
+io.microsphere.dynamic.jdbc.spring.boot.transaction.context.TransactionConfigurationConfigBeanDefinitionRegistrar,\
+io.microsphere.dynamic.jdbc.spring.boot.shardingsphere.context.ShardingSphereConfigurationConfigBeanDefinitionRegistrar,\
+io.microsphere.dynamic.jdbc.spring.boot.mybatis.context.MybatisConfigurationConfigBeanDefinitionRegistrar,\
+io.microsphere.dynamic.jdbc.spring.boot.mybatisplus.context.MybatisPlusConfigurationConfigBeanDefinitionRegistrar
+
+# ParentContextBeanNameGenerator
+io.microsphere.dynamic.jdbc.spring.boot.context.ParentContextBeanNameGenerator=\
+io.microsphere.dynamic.jdbc.spring.boot.transaction.context.PlatformTransactionManagerBeanNameGenerator

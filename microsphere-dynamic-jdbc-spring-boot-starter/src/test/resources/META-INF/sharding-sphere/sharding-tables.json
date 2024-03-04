@@ -1,0 +1,26 @@
+{
+  "ha-datasource": {
+    "defaultZone": [
+      {
+        "name": "ds",
+        "jdbcUrl": "127.0.0.1:3306/demo_ds"
+      }
+    ],
+    "test-zone": [
+      {
+        "name": "ds",
+        "jdbc-url": "127.0.0.1:3306/demo_ds_0"
+      }
+    ]
+  },
+  "sharding-sphere": {
+    "config-resource": "classpath:/META-INF/sharding-sphere/config/sharding-tables.yaml"
+  },
+  "mybatis": {
+    "base-packages": "io.microsphere.dynamic.jdbc.spring.boot.shardingsphere.examples.mybatis.repository",
+    "properties": {
+      "checkConfigLocation": true,
+      "configLocation": "classpath:/META-INF/mybatis/mybatis-config.xml"
+    }
+  }
+}

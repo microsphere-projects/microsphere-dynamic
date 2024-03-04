@@ -1,0 +1,38 @@
+{
+  "name": "test",
+  "datasource": [
+    {
+      "name": "ds1",
+      "type": "com.zaxxer.hikari.HikariDataSource",
+      "driverClassName": "org.apache.derby.jdbc.EmbeddedDriver",
+      "url": "jdbc:derby:db/ds1;create=true",
+      "username": "",
+      "password": ""
+    },
+    {
+      "name": "ds2",
+      "url": "jdbc:derby:db/ds2;create=true"
+    }
+  ],
+  "transaction": {
+    "name": "tx1",
+    "properties": {
+      "defaultTimeout": 3,
+      "rollbackOnCommitFailure": true
+    }
+  },
+  "sharding-sphere": {
+    "config-resource": "classpath:/META-INF/sharding-sphere/config.yaml"
+  },
+  "mybatis": {
+    "base-packages": "io.microsphere.dynamic.jdbc.spring.boot",
+    "properties": {
+      "checkConfigLocation": true,
+      "configLocation": "classpath:/META-INF/mybatis/mybatis-config.xml",
+      "mapperLocations": "META-INF/mappers/AddressMapper.xml,META-INF/mappers/OrderMapper.xml,META-INF/mappers/OrderItemMapper.xml"
+    }
+  },
+  "mybatis-plus": {
+    "base-packages": "io.microsphere.dynamic.jdbc.spring.boot.config"
+  }
+}

@@ -1,0 +1,3 @@
+# DefaultPropertiesPostProcessor
+io.microsphere.spring.boot.env.DefaultPropertiesPostProcessor=\
+io.microsphere.dynamic.jdbc.spring.boot.env.SpringBootTestDefaultPropertiesPostProcessor
