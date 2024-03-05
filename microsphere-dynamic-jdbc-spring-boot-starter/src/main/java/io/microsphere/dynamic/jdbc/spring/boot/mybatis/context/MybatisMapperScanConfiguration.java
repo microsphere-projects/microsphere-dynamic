@@ -22,6 +22,7 @@ import org.springframework.util.ClassUtils;
 import java.util.HashSet;
 import java.util.Set;
 
+import static io.microsphere.dynamic.jdbc.spring.boot.mybatis.constants.MybatisConstants.DYNAMIC_JDBC_MYBATIS_BASE_PACKAGES_PLACEHOLDER;
 import static org.springframework.util.StringUtils.tokenizeToStringArray;
 
 /**
@@ -31,7 +32,7 @@ import static org.springframework.util.StringUtils.tokenizeToStringArray;
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy<a/>
  * @since 1.0.0
  */
-@MapperScan(basePackages = MybatisConstants.DYNAMIC_JDBC_MYBATIS_BASE_PACKAGES_PLACEHOLDER)
+@MapperScan(basePackages = DYNAMIC_JDBC_MYBATIS_BASE_PACKAGES_PLACEHOLDER)
 class MybatisMapperScanConfiguration {
 
     private static final ResourcePatternResolver RESOURCE_PATTERN_RESOLVER = new PathMatchingResourcePatternResolver();
