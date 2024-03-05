@@ -49,7 +49,7 @@ class DynamicJdbcContextProcessor {
 
     void process(DynamicJdbcConfig dynamicJdbcConfig, String dynamicJdbcConfigPropertyName, ConfigurableApplicationContext context) {
 
-        // Enhance Spring Test
+        // Enhance Spring Context
         registerAnnotationConfigProcessors(context);
 
         // Post-Process DynamicJdbcConfig
@@ -62,8 +62,10 @@ class DynamicJdbcContextProcessor {
         if (dynamicJdbcConfig.isDynamic()) {
             processDynamic(dynamicJdbcConfig, dynamicJdbcConfigPropertyName, context);
         }
+
         // Process DynamicJdbc Configuration Properties
         processDynamicJdbcConfigurationProperties(dynamicJdbcConfig, dynamicJdbcConfigPropertyName, context);
+
         // Register DynamicJdbcConfig BeanDefinitions
         registerDynamicJdbcConfigBeanDefinitions(dynamicJdbcConfig, dynamicJdbcConfigPropertyName, context);
     }
@@ -74,13 +76,13 @@ class DynamicJdbcContextProcessor {
     }
 
     private void postProcessDynamicJdbcConfig(DynamicJdbcConfig dynamicJdbcConfig, String dynamicJdbcConfigPropertyName,
-                                               ConfigurableApplicationContext context) {
+                                              ConfigurableApplicationContext context) {
         List<ConfigPostProcessor> configPostProcessors = getConfigPostProcessors(context);
         configPostProcessors.forEach(configPostProcessor -> configPostProcessor.postProcess(dynamicJdbcConfig, dynamicJdbcConfigPropertyName));
     }
 
     private void validateDynamicJdbcConfig(DynamicJdbcConfig dynamicJdbcConfig, String dynamicJdbcConfigPropertyName,
-                                            ConfigurableApplicationContext context) throws ConfigValidationException {
+                                           ConfigurableApplicationContext context) throws ConfigValidationException {
         List<ConfigValidator> configValidators = getConfigValidators(context);
         ValidationErrors validationErrors = new ValidationErrors(dynamicJdbcConfig.getName());
         configValidators.forEach(configValidator -> {
@@ -128,13 +130,11 @@ class DynamicJdbcContextProcessor {
     }
 
     private void processDynamicJdbcConfigurationProperties(DynamicJdbcConfig dynamicJdbcConfig, String dynamicJdbcConfigPropertyName,
-                                                            ConfigurableApplicationContext context) {
+                                                           ConfigurableApplicationContext context) {
         MapPropertySource dynamicJdbcConfigPropertySource =
                 addDynamicJdbcConfigPropertySource(dynamicJdbcConfig, dynamicJdbcConfigPropertyName, context);
         if (context instanceof DynamicJdbcChildContext) {
             addExclusionAutoConfigurationPropertySource(context, dynamicJdbcConfigPropertySource);
-        } else {
-            addExclusionAutoConfigurationsProperty(context, dynamicJdbcConfigPropertySource);
         }
     }
 
@@ -142,13 +142,13 @@ class DynamicJdbcContextProcessor {
      * Add {@link DynamicJdbcConfig} {@link PropertySource} into {@link ConfigurableEnvironment} for
      * Auto-Configuration classes Dynamic JDBC requires.
      *
-     * @param dynamicJdbcConfig              {@link DynamicJdbcConfig}
+     * @param dynamicJdbcConfig             {@link DynamicJdbcConfig}
      * @param dynamicJdbcConfigPropertyName the property name of {@link DynamicJdbcConfig}
-     * @param context                        {@link ConfigurableApplicationContext}
+     * @param context                       {@link ConfigurableApplicationContext}
      * @return {@link PropertySource}
      */
     private MapPropertySource addDynamicJdbcConfigPropertySource(DynamicJdbcConfig dynamicJdbcConfig, String dynamicJdbcConfigPropertyName,
-                                                                  ConfigurableApplicationContext context) {
+                                                                 ConfigurableApplicationContext context) {
         ConfigurableEnvironment environment = context.getEnvironment();
         MutablePropertySources propertySources = environment.getPropertySources();
         String currentPropertySourceName = findConfiguredPropertySourceName(environment, dynamicJdbcConfigPropertyName);
@@ -165,14 +165,6 @@ class DynamicJdbcContextProcessor {
         return dynamicJdbcPropertySource;
     }
 
-    private void addExclusionAutoConfigurationsProperty(ConfigurableApplicationContext context, MapPropertySource dynamicJdbcConfigPropertySource) {
-        ConfigurableEnvironment environment = context.getEnvironment();
-        Object propertyValue = dynamicJdbcConfigPropertySource.getProperty(AUTO_CONFIGURE_EXCLUDE_PROPERTY_NAME);
-        if (propertyValue instanceof String) {
-            // FIXME exclude (environment, StringUtils.commaDelimitedListToStringArray((String) propertyValue));
-        }
-    }
-
     private void addExclusionAutoConfigurationPropertySource(ConfigurableApplicationContext context,
                                                              MapPropertySource dynamicJdbcConfigPropertySource) {
         ConfigurableEnvironment environment = context.getEnvironment();
@@ -185,7 +177,7 @@ class DynamicJdbcContextProcessor {
     }
 
     private void registerDynamicJdbcConfigBeanDefinitions(DynamicJdbcConfig dynamicJdbcConfig, String dynamicJdbcConfigPropertyName,
-                                                           ConfigurableApplicationContext context) {
+                                                          ConfigurableApplicationContext context) {
         List<ConfigBeanDefinitionRegistrar> beanDefinitionRegistrars = getDynamicJdbcConfigBeanDefinitionRegistrars(context);
         BeanDefinitionRegistry beanDefinitionRegistry = resolveBeanDefinitionRegistry(context);
         beanDefinitionRegistrars.forEach(beanDefinitionRegistrar -> {
@@ -214,7 +206,7 @@ class DynamicJdbcContextProcessor {
     }
 
     private MapPropertySource buildDynamicJdbcPropertySource(DynamicJdbcConfig dynamicJdbcConfig, String dynamicJdbcConfigPropertyName,
-                                                              List<ConfigConfigurationPropertiesSynthesizer> configConfigurationPropertiesSynthesizers) {
+                                                             List<ConfigConfigurationPropertiesSynthesizer> configConfigurationPropertiesSynthesizers) {
         String propertySourceName = generateSynthesizedPropertySourceName(dynamicJdbcConfigPropertyName);
         Map<String, Object> properties = new HashMap<>();
         configConfigurationPropertiesSynthesizers.forEach(synthesizer -> {
