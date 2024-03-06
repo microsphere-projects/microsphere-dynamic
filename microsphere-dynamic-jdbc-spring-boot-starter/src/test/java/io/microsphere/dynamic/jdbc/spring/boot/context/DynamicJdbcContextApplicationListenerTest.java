@@ -2,6 +2,8 @@ package io.microsphere.dynamic.jdbc.spring.boot.context;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.microsphere.dynamic.jdbc.spring.boot.config.DynamicJdbcConfig;
+import io.microsphere.spring.config.env.event.PropertySourceChangedEvent;
+import io.microsphere.spring.config.env.event.PropertySourcesChangedEvent;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.shardingsphere.driver.jdbc.core.datasource.ShardingSphereDataSource;
 import org.junit.Test;
@@ -11,11 +13,13 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.MapPropertySource;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
+import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
@@ -24,7 +28,7 @@ import static org.junit.Assert.assertNotNull;
 
 /**
  * {@link DynamicJdbcContextApplicationListener} Test
- * 
+ *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy<a/>
  * @since 1.0.0
  */
@@ -70,9 +74,14 @@ public class DynamicJdbcContextApplicationListenerTest {
 
         String propertyName = "microsphere.dynamic.jdbc.configs.primary";
 
-//        ConfigChangeEvent configChangeEvent = new ConfigChangeEvent(singleton(propertyName));
-//
-//        context.publishEvent(configChangeEvent);
+        Map<String, Object> properties = new HashMap<>();
+        properties.put(propertyName, environment.getProperty(propertyName));
+
+        MapPropertySource propertySource = new MapPropertySource(propertyName, properties);
+
+        PropertySourcesChangedEvent propertySourcesChangedEvent = new PropertySourcesChangedEvent(context, PropertySourceChangedEvent.added(context, propertySource));
+
+        context.publishEvent(propertySourcesChangedEvent);
 
         assertNotEquals(unwrappedDataSource, dataSource.unwrap(DataSource.class));
 
