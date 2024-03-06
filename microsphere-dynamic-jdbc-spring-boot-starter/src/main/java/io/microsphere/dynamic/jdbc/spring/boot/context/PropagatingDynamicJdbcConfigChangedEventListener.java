@@ -64,7 +64,7 @@ class PropagatingDynamicJdbcConfigChangedEventListener implements SmartApplicati
         Set<String> keys = event.getChangedProperties().keySet();
         for (String key : keys) {
             if (dynamicJdbcConfigPropertyNames.contains(key)) {
-                logger.info("The key['{}'] of ConfigChangeEvent[context : '{}'] matches the property names of DynamicJdbcConfig : {}", key,
+                logger.info("The key['{}'] of PropertySourcesChangedEvent[context : '{}'] matches the property names of DynamicJdbcConfig : {}", key,
                         context.getId(), dynamicJdbcConfigPropertyNames);
                 publishDynamicJdbcConfigChangedEvent(key);
             }
