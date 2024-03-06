@@ -24,7 +24,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 /**
- * TODO
+ * MariaDB -> MySQL
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy<a/>
  * @see TODO
@@ -38,7 +38,7 @@ public class AbstractMariaDB4jTest {
         configBuilder.setPort(3306);
         DB db = DB.newEmbeddedDB(configBuilder.build());
         db.start();
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/test", "root", "");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "");
 
     }
 }
