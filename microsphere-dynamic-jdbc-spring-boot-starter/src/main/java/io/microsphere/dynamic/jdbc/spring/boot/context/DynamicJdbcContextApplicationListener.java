@@ -15,7 +15,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
 
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import static io.microsphere.dynamic.jdbc.spring.boot.util.DynamicJdbcConfigUtils.getDynamicJdbcConfigs;
@@ -117,11 +117,12 @@ public class DynamicJdbcContextApplicationListener extends OnceMainApplicationPr
                                                  ConfigurableApplicationContext context) {
         int parallelism = dynamicJdbcConfigEntrySet.size();
 
-        ExecutorService executorService = newFixedThreadPool(parallelism);
+        ThreadPoolExecutor executorService = (ThreadPoolExecutor) newFixedThreadPool(parallelism);
         InitializeErrors initializeErrors = new InitializeErrors();
 
+
         for (Map.Entry<String, DynamicJdbcConfig> dynamicJdbcConfigEntry : dynamicJdbcConfigEntrySet) {
-            executorService.submit(() -> {
+            executorService.execute(() -> {
                 try {
                     initializeDynamicJdbcChildContext(dynamicJdbcConfigEntry, context);
                 } catch (Throwable t) {
@@ -134,9 +135,15 @@ public class DynamicJdbcContextApplicationListener extends OnceMainApplicationPr
 
         boolean terminated = false;
 
+        long completedTaskCount = 0;
+
         while (!terminated) {
             try {
                 terminated = executorService.awaitTermination(1, TimeUnit.SECONDS);
+                completedTaskCount = executorService.getCompletedTaskCount();
+                if (completedTaskCount == parallelism) {
+                    break;
+                }
             } catch (InterruptedException e) {
                 terminated = true;
             }
