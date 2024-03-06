@@ -73,13 +73,6 @@ public class DynamicJdbcContextApplicationListenerMultipleContextTest {
 
         propertySources.addFirst(new MapPropertySource("zone", singletonMap(ZONE_PROPERTY_NAME, "test-zone")));
 
-        // context.publishEvent(new ConfigChangeEvent(singleton("microsphere.dynamic.jdbc.configs.single-database-sharding-tables")));
-
-        // context.publishEvent(new ConfigChangeEvent(singleton(ZONE_PROPERTY_NAME)));
-        // No Change
-        // context.publishEvent(new ConfigChangeEvent(singleton(ZONE_PROPERTY_NAME)));
-
         Thread.sleep(10 * 1000);
-
     }
 }
