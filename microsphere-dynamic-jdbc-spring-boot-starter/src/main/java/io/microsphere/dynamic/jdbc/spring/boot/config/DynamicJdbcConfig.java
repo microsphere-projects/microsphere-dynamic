@@ -421,7 +421,7 @@ public class DynamicJdbcConfig implements BeanFactoryAware {
     }
 
     /**
-     * Mybatis Config
+     * Mybatis-Plus Config
      */
     @Module(DynamicJdbcConstants.MYBATIS_PLUS_MODULE)
     public static class MybatisPlus extends Config {
