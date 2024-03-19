@@ -26,7 +26,7 @@ public class DynamicJdbcConfigValidator extends AbstractConfigValidator {
     );
 
     @Override
-    public void validate(DynamicJdbcConfig config, String dynamicJdbcConfigPropertyName, ValidationErrors errors) {
+    public void validate(DynamicJdbcConfig config, String shardingJdbConfigPropertyName, ValidationErrors errors) {
         validateName(config, errors);
         validateModules(config, errors);
     }
