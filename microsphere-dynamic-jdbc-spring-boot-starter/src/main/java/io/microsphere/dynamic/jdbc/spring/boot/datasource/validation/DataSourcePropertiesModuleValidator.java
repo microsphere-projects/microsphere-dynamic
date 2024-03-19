@@ -29,7 +29,7 @@ import static java.util.Collections.emptyList;
 public class DataSourcePropertiesModuleValidator extends AbstractConfigValidator {
 
     @Override
-    public void validate(DynamicJdbcConfig dynamicJdbcConfig, String shardingJdbConfigPropertyName, ValidationErrors validationErrors) {
+    public void validate(DynamicJdbcConfig dynamicJdbcConfig, String dynamicJdbcConfigPropertyName, ValidationErrors validationErrors) {
         validateDataSource(dynamicJdbcConfig, validationErrors);
         validateDataSourcePropertiesList(dynamicJdbcConfig, validationErrors);
     }

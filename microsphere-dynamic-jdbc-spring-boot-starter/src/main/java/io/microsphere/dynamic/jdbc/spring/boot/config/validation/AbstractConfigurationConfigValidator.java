@@ -22,7 +22,7 @@ public abstract class AbstractConfigurationConfigValidator<C extends DynamicJdbc
         implements ConfigurationCapable<C> {
 
     @Override
-    public final void validate(DynamicJdbcConfig dynamicJdbcConfig, String shardingJdbConfigPropertyName, ValidationErrors errors) {
+    public final void validate(DynamicJdbcConfig dynamicJdbcConfig, String dynamicJdbcConfigPropertyName, ValidationErrors errors) {
         C configuration = getConfiguration(dynamicJdbcConfig);
         if (configuration == null) {
             logger.info("No '{}' modules' Config of DynamicJdbcConfig[name :{}] to be validated", getModule(), dynamicJdbcConfig.getName());
