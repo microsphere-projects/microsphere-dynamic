@@ -15,9 +15,9 @@ public interface ConfigValidator {
      * Validate {@link DynamicJdbcConfig}
      * 
      * @param dynamicJdbcConfig {@link DynamicJdbcConfig}
-     * @param shardingJdbConfigPropertyName the property name of {@link DynamicJdbcConfig}
+     * @param dynamicJdbcConfigPropertyName the property name of {@link DynamicJdbcConfig}
      * @param validationErrors {@link ValidationErrors}
      */
-    void validate(DynamicJdbcConfig dynamicJdbcConfig, String shardingJdbConfigPropertyName, ValidationErrors validationErrors);
+    void validate(DynamicJdbcConfig dynamicJdbcConfig, String dynamicJdbcConfigPropertyName, ValidationErrors validationErrors);
 
 }
