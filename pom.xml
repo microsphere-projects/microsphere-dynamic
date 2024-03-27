@@ -59,7 +59,7 @@
     <modules>
         <module>microsphere-dynamic-parent</module>
         <module>microsphere-dynamic-dependencies</module>
-        <module>microsphere-dynamic-jdbc-spring-boot-starter</module>
+        <module>microsphere-dynamic-jdbc-spring-boot</module>
     </modules>
 
     <distributionManagement>

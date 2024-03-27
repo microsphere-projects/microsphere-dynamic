@@ -11,12 +11,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.microsphere-projects</groupId>
-    <artifactId>microsphere-dynamic-jdbc-spring-boot-starter</artifactId>
+    <artifactId>microsphere-dynamic-jdbc-spring-boot</artifactId>
     <version>${revision}</version>
     <packaging>jar</packaging>
 
-    <name>Microsphere :: Dynamic :: JDBC :: Spring Boot Starter</name>
-    <description>Microsphere Dynamic JDBC Spring Boot Starter</description>
+    <name>Microsphere :: Dynamic :: JDBC :: Spring Boot</name>
+    <description>Microsphere Dynamic JDBC Spring Boot</description>
 
     <dependencies>
 
@@ -31,10 +31,16 @@
             <artifactId>microsphere-multiactive-spring</artifactId>
         </dependency>
 
-        <!-- Spring -->
+        <!-- Spring Boot Dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-actuator</artifactId>
             <optional>true</optional>
         </dependency>
 
