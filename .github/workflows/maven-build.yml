@@ -22,7 +22,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java: [ '8' , '11' , '17' , '21' , '25' ]
+        java: [ '17' , '21' , '25' ]
+        maven-profile-spring-cloud: [ 'spring-cloud-2022' , 'spring-cloud-2023' , 'spring-cloud-2024' ,
+                                      'spring-cloud-2025' ]
     steps:
       - name: Checkout Source
         uses: actions/checkout@v7.0.1
@@ -40,7 +42,6 @@ jobs:
           --update-snapshots
           --file pom.xml
           -Drevision=0.0.1-SNAPSHOT
-          -Dsurefire.useSystemClassLoader=false
           test
           --activate-profiles test,coverage
 
