@@ -19,8 +19,8 @@
     <description>Microsphere Dynamic Parent</description>
 
     <properties>
-        <microsphere-spring-cloud.version>${revision}</microsphere-spring-cloud.version>
-        <microsphere-multiactive.version>${revision}</microsphere-multiactive.version>
+        <microsphere-spring-cloud.version>0.2.26</microsphere-spring-cloud.version>
+        <microsphere-multiactive.version>0.2.13</microsphere-multiactive.version>
         <!-- Third-party versions -->
         <mysql-connector-java.version>8.0.28</mysql-connector-java.version>
         <mybatis.version>3.5.15</mybatis.version>
