@@ -26,7 +26,7 @@
         <mybatis.version>3.5.15</mybatis.version>
         <mybatis-starter.version>2.3.1</mybatis-starter.version>
         <mybatis-plus.version>3.3.0</mybatis-plus.version>
-        <shardingsphere.version>5.1.1</shardingsphere.version>
+        <shardingsphere.version>5.2.1</shardingsphere.version>
         <mariadb4j.version>2.5.3</mariadb4j.version>
     </properties>
 
